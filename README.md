@@ -13,11 +13,29 @@ Assistente acadêmico com chat, RAG sobre PDFs, gerenciamento de tarefas, agenda
 
 ## Executar Localmente
 
+### Pré-requisitos
+* Ter o [Git](https://git-scm.com/) instalado.
+* Ter o [Python 3.10 ou superior](https://www.python.org/downloads/) instalado globalmente na máquina.
+
+### Passo a Passo de Instalação
 Ative o ambiente do projeto:
 
 ```python
-conda activate jarvis_env
+python -m venv .venv
 ```
+Ative a bolha de isolamento de acordo com o seu sistema operacional:
+
+Windows (Prompt de Comando ou PowerShell):
+
+```Bash
+.venv\Scripts\activate
+``` 
+Linux / Mac (Terminal):
+
+```Bash
+source .venv/bin/activate
+```
+O terminal exibirá o prefixo (.venv) confirmando a ativação bem-sucedida.
 
 Suba o frontend e o backend simultaneamente:
 
