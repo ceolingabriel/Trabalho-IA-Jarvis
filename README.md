@@ -17,13 +17,16 @@ Ative o ambiente do projeto:
 
 ```bash
 conda activate jarvis_env
+```
 
 Suba o frontend e o backend simultaneamente:
 
-Bash
+```bash
 streamlit run frontend/app.py
+```
 Acesse:
 
-Plaintext
+```Plaintext
 Frontend: http://localhost:8501
+```
 O terminal exibirá os logs de execução do Streamlit. Para parar a aplicação, pressione Ctrl + C no terminal.
