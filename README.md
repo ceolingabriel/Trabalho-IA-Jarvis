@@ -42,7 +42,7 @@ model='google/gemma-3-12b-it'
 ## Banco de dados
 O SQLite usado pelo sistema cria o arquivo automaticamente na raiz do backend:
 
-```
+```python
 backend/db/jarvis.db
 ```
 Para forçar a criação do banco de dados vazio e de suas tabelas, execute:
