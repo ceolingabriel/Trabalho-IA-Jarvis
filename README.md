@@ -55,8 +55,8 @@ python backend/core/database.py
 ```
 
 
-Inicie o Assistente Visual:
-
+##Inicie o Assistente Visual
+Suba o frontend e o backend simultaneamente:
 ```python
 streamlit run frontend/app.py
 ```
