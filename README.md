@@ -15,13 +15,13 @@ Assistente acadêmico com chat, RAG sobre PDFs, gerenciamento de tarefas, agenda
 
 Ative o ambiente do projeto:
 
-```bash
+```python
 conda activate jarvis_env
 ```
 
 Suba o frontend e o backend simultaneamente:
 
-```bash
+```python
 streamlit run frontend/app.py
 ```
 Acesse:
@@ -34,7 +34,7 @@ O terminal exibirá os logs de execução do Streamlit. Para parar a aplicação
 ## Configuração da LLM
 As chaves e os endpoints estão configurados diretamente no cliente OpenAI instanciado no arquivo backend/core/agent.py:
 
-```Python
+```python
 base_url='[https://llm.liaufms.org/v1/gemma-3-12b-it](https://llm.liaufms.org/v1/gemma-3-12b-it)'
 api_key='Sua_Chave_Aqui'
 model='google/gemma-3-12b-it'
@@ -47,12 +47,12 @@ backend/db/jarvis.db
 ```
 Para forçar a criação do banco de dados vazio e de suas tabelas, execute:
 
-```Bash
+```python
 python backend/core/database.py
 ```
 Consultar o banco diretamente via terminal:
 
-```Bash
+```python
 sqlite3 backend/db/jarvis.db
 ```
 
