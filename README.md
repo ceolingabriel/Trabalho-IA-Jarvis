@@ -39,3 +39,25 @@ base_url='[https://llm.liaufms.org/v1/gemma-3-12b-it](https://llm.liaufms.org/v1
 api_key='Sua_Chave_Aqui'
 model='google/gemma-3-12b-it'
 ```
+## Banco de dados
+O SQLite usado pelo sistema cria o arquivo automaticamente na raiz do backend:
+
+```
+backend/db/jarvis.db
+```
+Para forçar a criação do banco de dados vazio e de suas tabelas, execute:
+
+```Bash
+python backend/core/database.py
+```
+Consultar o banco diretamente via terminal:
+
+```Bash
+sqlite3 backend/db/jarvis.db
+```
+
+
+
+
+
+
