@@ -38,13 +38,12 @@ source .venv/bin/activate
 O terminal exibirá o prefixo (.venv) confirmando a ativação bem-sucedida.
 
 
-## Instale o PyTorch otimizado para CPU
+## Instale o PyTorch + dependências
 Para evitar o download desnecessário de pacotes gigantescos contendo drivers de placas de vídeo (CUDA), force a instalação da versão leve específica para execução em processadores comuns:
 
 ```Bash
 pip install torch torchvision --index-url [https://download.pytorch.org/whl/cpu](https://download.pytorch.org/whl/cpu)
 ```
-## Instale o restante das dependências
 
 ```Bash
 pip install -r requirements.txt
