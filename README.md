@@ -55,7 +55,14 @@ Consultar o banco diretamente via terminal:
 ```python
 sqlite3 backend/db/jarvis.db
 ```
+## Logs de Observabilidade
+A cada chamada de ferramenta feita pela IA, o sistema grava automaticamente o evento, a entrada e a saída de dados.
 
+Os logs persistem em:
+
+```python
+backend/logs/tool_calls.log
+```
 
 
 
