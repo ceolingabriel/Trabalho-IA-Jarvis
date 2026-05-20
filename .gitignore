@@ -1,1 +1,2 @@
 backend/db/jarvis.db
+backend/logs/*.log
