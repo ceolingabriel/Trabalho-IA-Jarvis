@@ -1,6 +1,6 @@
 # Trabalho-IA-Jarvis
 
-Assistente acadêmico com chat, RAG sobre PDFs, gerenciamento de tarefas, agenda, módulo de aprendizado (Active Recall) e logs de observabilidade via Tool Calling (ReAct).
+Assistente acadêmico com chat, RAG sobre PDFs, gerenciamento de tarefas, agenda, módulo de aprendizado e logs de observabilidade via Tool Calling.
 
 ## Stack
 
