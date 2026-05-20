@@ -30,3 +30,11 @@ Acesse:
 Frontend: http://localhost:8501
 ```
 O terminal exibirá os logs de execução do Streamlit. Para parar a aplicação, pressione Ctrl + C no terminal.
+
+## Configuração da LLM
+As chaves e os endpoints estão configurados diretamente no cliente OpenAI instanciado no arquivo backend/core/agent.py:
+
+Python
+base_url='[https://llm.liaufms.org/v1/gemma-3-12b-it](https://llm.liaufms.org/v1/gemma-3-12b-it)'
+api_key='Sua_Chave_Aqui'
+model='google/gemma-3-12b-it'
