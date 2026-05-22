@@ -81,11 +81,6 @@ O SQLite usado pelo sistema cria o arquivo automaticamente na raiz do backend:
 ```python
 backend/db/jarvis.db
 ```
-Para forçar a criação do banco de dados vazio e de suas tabelas, execute:
-
-```python
-python backend/core/database.py
-```
 Consultar o banco diretamente via terminal:
 
 ```python
