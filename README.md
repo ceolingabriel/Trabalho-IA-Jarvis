@@ -137,7 +137,7 @@ O agente segue o padrão **ReAct** (Reasoning + Acting): o usuário envia uma me
 
 ## IAs Utilizadas
 
-## Modelos de Linguagem (LLMs)
+| Ferramenta |
 |---|
 | `Claude Code` |
 | `Google Gemini` |
