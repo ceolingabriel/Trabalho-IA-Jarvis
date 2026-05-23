@@ -121,9 +121,6 @@ Trabalho-IA-Jarvis/
 | `concluir_tarefa` | Marca tarefa como concluída pelo ID |
 | `buscar_material_rag` | Busca semântica nos PDFs da pasta `data/` |
 
-## Adicionando Seus Próprios PDFs
-
-Coloque qualquer PDF na pasta `backend/data/` antes de iniciar. O sistema indexa todos automaticamente ao subir.
 
 ## Arquitetura
 
