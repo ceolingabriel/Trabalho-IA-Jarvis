@@ -137,10 +137,7 @@ O agente segue o padrão **ReAct** (Reasoning + Acting): o usuário envia uma me
 
 ## IAs Utilizadas
 
-## Modelos Utilizados
-
-**Modelo Generativo (LLM)**
-- `google/gemma-3-12b-it` — servido via endpoint da LIAUFMS, usado para raciocínio, tool calling e geração de respostas
-
-**Modelo de Embeddings**
-- `all-MiniLM-L6-v2` — executado localmente via sentence-transformers, usado para indexação e busca semântica no RAG
+## Modelos de Linguagem (LLMs)
+|---|
+| `Claude Code` |
+| `Google Gemini` |
