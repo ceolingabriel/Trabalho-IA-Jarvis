@@ -129,15 +129,6 @@ Coloque qualquer PDF na pasta `backend/data/` antes de iniciar. O sistema indexa
 
 O agente segue o padrão **ReAct** (Reasoning + Acting): o usuário envia uma mensagem → o agente decide se precisa usar uma ferramenta → executa a ferramenta → usa o resultado para formular a resposta final. Toda chamada de ferramenta é registrada automaticamente em `backend/logs/tool_calls.log`.
 
-## Configuração da Chave de API
-
-A chave de API está configurada diretamente em `backend/core/agent.py`. Antes de usar, substitua o valor do campo `api_key`:
-
-```python
-api_key='Sua_Chave'
-```
-
-> ⚠️ Não suba esse arquivo com a chave preenchida para repositórios públicos.
 
 ## Limitações Conhecidas
 
