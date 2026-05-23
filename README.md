@@ -135,4 +135,12 @@ O agente segue o padrão **ReAct** (Reasoning + Acting): o usuário envia uma me
 - O modelo pode ocasionalmente retornar JSON mal formatado ao tentar chamar uma ferramenta. O sistema trata esse erro automaticamente e solicita que o usuário repita a pergunta.
 - O índice FAISS é construído em memória a cada inicialização — quanto mais PDFs na pasta `data/`, maior o tempo de startup.
 
+## IAs Utilizadas
 
+## Modelos Utilizados
+
+**Modelo Generativo (LLM)**
+- `google/gemma-3-12b-it` — servido via endpoint da LIAUFMS, usado para raciocínio, tool calling e geração de respostas
+
+**Modelo de Embeddings**
+- `all-MiniLM-L6-v2` — executado localmente via sentence-transformers, usado para indexação e busca semântica no RAG
