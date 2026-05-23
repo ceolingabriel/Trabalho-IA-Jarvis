@@ -96,7 +96,8 @@ backend/logs/tool_calls.log
 ```
 
 
-markdown## Estrutura de Pastas
+```markdown
+## Estrutura de Pastas
 Trabalho-IA-Jarvis/
 ├── backend/
 │   ├── core/
@@ -109,7 +110,7 @@ Trabalho-IA-Jarvis/
 │   └── logs/              # tool_calls.log (criado automaticamente)
 └── frontend/
 └── app.py             # Interface Streamlit
-
+```
 ## Ferramentas Disponíveis
 
 | Ferramenta | O que faz |
