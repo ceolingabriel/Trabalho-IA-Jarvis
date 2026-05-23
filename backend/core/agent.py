@@ -14,7 +14,7 @@ def interagir_com_jarvis(mensagem_usuario: str, historico: list = None) -> str:
     
     hoje = datetime.now().strftime("%Y-%m-%d")
     
-    # 1. ENGENHARIA DE PROMPT (ReAct) Mais Rigorosa
+    # ReAct
     prompt_sistema = f"""Você é o JARVIS, um assistente acadêmico autônomo. Hoje é {hoje}.
 Você possui as seguintes ferramentas:
 - consultar_agenda (parâmetro: "data" em formato YYYY-MM-DD)
@@ -23,7 +23,7 @@ Você possui as seguintes ferramentas:
 - concluir_tarefa (parâmetro: "tarefa_id" em número inteiro)
 - buscar_material_rag (parâmetro: "query" em string)
 
-REGRA DE OURO: Se precisar usar uma ferramenta, retorne APENAS um JSON puro, SEM MARKDOWN, SEM EXPLICAÇÕES ANTES OU DEPOIS. 
+Se precisar usar uma ferramenta, retorne APENAS um JSON puro, SEM MARKDOWN, SEM EXPLICAÇÕES ANTES OU DEPOIS. 
 Exemplo exato e obrigatório do que você deve retornar:
 {{"tool": "listar_tarefas", "args": {{"status": "pendente"}}}}
 
