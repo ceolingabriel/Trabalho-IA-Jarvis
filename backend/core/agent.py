@@ -1,18 +1,22 @@
 import json
 from datetime import datetime
 from openai import OpenAI
+from datetime import datetime
+import pytz
 from backend.core.tools import executar_ferramenta
+
 
 client = OpenAI(
     base_url='https://llm.liaufms.org/v1/gemma-3-12b-it', 
-    api_key='Sua_Chave'
+    api_key='Cxt2ftLF7d3mHS2JdiFqB-eSDAQeZvFATPXPs02lV9A'
 )
 
 def interagir_com_jarvis(mensagem_usuario: str, historico: list = None) -> str:
     if historico is None:
         historico = []
-    
-    hoje = datetime.now().strftime("%Y-%m-%d")
+
+    fuso_ms = pytz.timezone("America/Campo_Grande")
+    hoje = datetime.now(fuso_ms).strftime("%Y-%m-%d")
     
     # ReAct
     prompt_sistema = f"""Você é o JARVIS, um assistente acadêmico autônomo. Hoje é {hoje}.
