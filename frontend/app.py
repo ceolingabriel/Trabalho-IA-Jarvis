@@ -8,7 +8,7 @@ sys.path.append(BASE_DIR)
 from backend.core.agent import interagir_com_jarvis
 
 
-st.set_page_config(page_title="JARVIS Acadêmico", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="JARVIS IA", page_icon="🤖", layout="wide")
 st.title("🤖 JARVIS")
 
 
