@@ -72,7 +72,7 @@ As chaves e os endpoints estão configurados diretamente no cliente OpenAI insta
 
 ```python
 base_url='[https://llm.liaufms.org/v1/gemma-3-12b-it](https://llm.liaufms.org/v1/gemma-3-12b-it)'
-api_key='Sua_Chave_Aqui'
+api_key='Sua_Chave'
 model='google/gemma-3-12b-it'
 ```
 ## Banco de dados
