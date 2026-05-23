@@ -9,7 +9,7 @@ from backend.core.agent import interagir_com_jarvis
 
 
 st.set_page_config(page_title="JARVIS Acadêmico", page_icon="🤖", layout="wide")
-st.title("🤖 JARVIS - Assistente Pessoal Acadêmico")
+st.title("🤖 JARVIS")
 
 
 if "messages" not in st.session_state:
