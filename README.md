@@ -137,7 +137,7 @@ O agente segue o padrão **ReAct** (Reasoning + Acting): o usuário envia uma me
 
 ## IAs Utilizadas
 
-| Ferramenta |
-|---|
-| `Claude Code` |
-| `Google Gemini` |
+| Ferramenta | Uso |
+|---|---| 
+| `Claude (Anthropic)` | Auxílio na construção da arquitetura, revisão de código e documentação |
+| `Gemini (Google)` | Auxílio na construção da arquitetura |
