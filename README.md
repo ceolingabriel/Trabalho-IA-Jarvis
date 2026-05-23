@@ -96,8 +96,8 @@ backend/logs/tool_calls.log
 ```
 
 
-```markdown
 ## Estrutura de Pastas
+```markdown
 Trabalho-IA-Jarvis/
 ├── backend/
 │   ├── core/
