@@ -10,6 +10,7 @@ Os documentos são processados automaticamente ao iniciar o sistema com os segui
 - **Tamanho do chunk:** 800 caracteres
 - **Overlap:** 150 caracteres
 - **Estratégia:** `RecursiveCharacterTextSplitter` (LangChain)
+- **Escopo:** global (todos os PDFs tratados como um único texto)
 - **Embeddings:** `all-MiniLM-L6-v2` via sentence-transformers (indexado com FAISS)
 
 ### Documentos
