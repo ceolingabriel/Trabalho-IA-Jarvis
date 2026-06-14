@@ -6,7 +6,7 @@ Assistente acadêmico com chat, RAG sobre PDFs, gerenciamento de tarefas, agenda
 
 - Frontend: Streamlit
 - Backend: Python 3.10
-- IA: Cliente OpenAI-compatible (google/gemma-3-12b-it)
+- IA: Cliente OpenAI-compatible (Qwen/Qwen2.5-14B-Instruct-AWQ)
 - Banco: SQLite (Nativo)
 - RAG: FAISS + sentence-transformers (all-MiniLM-L6-v2)
 - Runtime: Ambiente Virtual Isolado (venv)
@@ -71,9 +71,9 @@ O terminal exibirá os logs de execução do Streamlit. Para parar a aplicação
 As chaves e os endpoints estão configurados diretamente no cliente OpenAI instanciado no arquivo backend/core/agent.py:
 
 ```python
-base_url='[https://llm.liaufms.org/v1/gemma-3-12b-it](https://llm.liaufms.org/v1/gemma-3-12b-it)'
+base_url='[https://llm.liaufms.org/v1/qwen2-5-14b-instruct-awq](https://llm.liaufms.org/v1/qwen2-5-14b-instruct-awq)'
 api_key='Sua_Chave'
-model='google/gemma-3-12b-it'
+model='Qwen/Qwen2.5-14B-Instruct-AWQ'
 ```
 ## Banco de dados
 O SQLite usado pelo sistema cria o arquivo automaticamente na raiz do backend:
@@ -103,6 +103,7 @@ Trabalho-IA-Jarvis/
 │   ├── core/
 │   │   ├── agent.py       # Lógica principal do agente ReAct
 │   │   ├── database.py    # SQLite: agenda e tarefas
+│   │   ├── learning.py    # Lógica de geração de resumos e perguntas de Active Recall
 │   │   ├── rag.py         # Indexação e busca FAISS
 │   │   └── tools.py       # Roteador de ferramentas + logs
 │   ├── data/              # PDFs indexados pelo RAG
