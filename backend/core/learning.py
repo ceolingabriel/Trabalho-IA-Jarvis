@@ -19,8 +19,8 @@ def gerar_exercicio_active_recall(topico: str) -> str:
     )
     
     resposta = client.chat.completions.create(
-        model='google/gemma-3-12b-it',
-        messages=[{"role": "user", "content": prompt}]
+        model='Qwen/Qwen2.5-14B-Instruct-AWQ',
+        messages=[{"role": "user", "content": "Olá"}]
     )
     return resposta.choices[0].message.content
 
@@ -37,8 +37,8 @@ def avaliar_resposta_aluno(pergunta: str, resposta_aluno: str, topico: str) -> s
     )
     
     resposta = client.chat.completions.create(
-        model='google/gemma-3-12b-it',
-        messages=[{"role": "user", "content": prompt}]
+        model='Qwen/Qwen2.5-14B-Instruct-AWQ',
+        messages=[{"role": "user", "content": "Olá"}]
     )
     return resposta.choices[0].message.content
 
@@ -62,7 +62,7 @@ def gerar_guia_revisao(topico: str) -> str:
     )
     
     resposta = client.chat.completions.create(
-        model='google/gemma-3-12b-it',
-        messages=[{"role": "user", "content": prompt}]
+        model='Qwen/Qwen2.5-14B-Instruct-AWQ',
+        messages=[{"role": "user", "content": "Olá"}]
     )
     return resposta.choices[0].message.content
