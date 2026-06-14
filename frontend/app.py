@@ -97,3 +97,31 @@ if prompt:
 
     st.chat_message("assistant").markdown(resposta_jarvis)
     st.session_state.messages.append({"role": "assistant", "content": resposta_jarvis})
+
+# =========================================================
+# BARRA LATERAL: MELHORIAS DE APRENDIZADO 
+# =========================================================
+with st.sidebar:
+    st.header("🧠 Modo Aprendizado")
+    st.caption("Baseado nos seus PDFs (RAG)")
+    
+    topico = st.text_input("Qual tópico deseja revisar agora?")
+    
+    if st.button("Gerar Exercício"):
+        with st.spinner("Lendo materiais..."):
+            st.session_state.pergunta_atual = gerar_exercicio_active_recall(topico)
+            st.session_state.topico_atual = topico
+            
+    
+    if "pergunta_atual" in st.session_state:
+        st.info(st.session_state.pergunta_atual)
+        resposta_aluno = st.text_area("Sua resposta:")
+        
+        if st.button("Avaliar Minha Resposta"):
+            with st.spinner("Avaliando..."):
+                avaliacao = avaliar_resposta_aluno(
+                    st.session_state.pergunta_atual, 
+                    resposta_aluno, 
+                    st.session_state.topico_atual
+                )
+                st.success(avaliacao)
