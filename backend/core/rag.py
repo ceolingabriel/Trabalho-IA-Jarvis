@@ -64,7 +64,7 @@ class JarvisRAG:
             
         self.index.add(np.array(embeddings).astype('float32'))
 
-    def buscar_trechos_relevantes(self, query: str, top_k: int = 3) -> str:
+    def buscar_trechos_relevantes(self, query: str, top_k: int = 6) -> str:
         """Retorna os trechos mais relevantes combinados em uma única string."""
         if self.index is None or len(self.chunks) == 0:
             return "Nenhum material de estudo encontrado. O dataset está vazio."
