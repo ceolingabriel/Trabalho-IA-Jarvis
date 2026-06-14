@@ -147,7 +147,6 @@ Gera um guia estruturado sobre o tópico contendo:
 ### Limitações
 
 - Todas as funcionalidades dependem do RAG: se nenhum PDF relevante ao tópico estiver na pasta `data/`, o sistema retorna uma mensagem de aviso em vez de inventar conteúdo
-- O guia de revisão (`gerar_guia_revisao`) está implementado no backend mas ainda não está exposto na interface Streamlit
 
 ## Arquitetura
 
