@@ -128,21 +128,17 @@ O módulo de aprendizado oferece funcionalidades educativas baseadas nos documen
 
 ### Funcionalidades
 
-**1. Active Recall**
+**1. Geração de Exercícios (Active Recall)**
 
-Gera automaticamente uma pergunta desafiadora sobre um tópico escolhido pelo usuário, com base exclusivamente nos PDFs da pasta `data/`. O fluxo é:
+O usuário informa um tópico, o RAG recupera os trechos relevantes dos PDFs e o modelo formula uma pergunta desafiadora baseada nesse material para testar o conhecimento do aluno, sem revelar a resposta.
 
-1. O usuário digita um tópico na sidebar
-2. O sistema busca trechos relevantes no índice FAISS via `buscar_trechos_relevantes()`
-3. É formulado uma pergunta de Active Recall sem revelar a resposta
-4. O usuário responde e solicita a avaliação
+**2. Avaliação de Resposta**
 
-**2. Guia de Revisão**
+O aluno responde à pergunta gerada. O RAG busca novamente o contexto do tópico e o modelo compara a resposta com o material de referência, emitindo um veredicto: correta, parcialmente correta ou incorreta, com justificativa.
 
-Gera um guia estruturado sobre o tópico contendo:
-- Os 3 conceitos principais a serem lembrados
-- As "pegadinhas" e partes mais difíceis do tema
-- Uma recomendação prática de como aplicar o conteúdo
+**3. Recomendação de Revisão**
+
+O RAG recupera o conteúdo relevante e o modelo estrutura um guia de revisão contendo os 3 conceitos principais do tema, as partes mais difíceis e uma recomendação prática de como aplicar o conteúdo.
 
 ### Limitações
 
