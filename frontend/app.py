@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 from backend.core.agent import interagir_com_jarvis
-from backend.core.learning import gerar_exercicio_active_recall, avaliar_resposta_aluno
+from backend.core.learning import gerar_exercicio_active_recall, avaliar_resposta_aluno, gerar_guia_revisao
 
 st.set_page_config(page_title="JARVIS IA", page_icon="🤖", layout="wide")
 st.title("🤖 JARVIS")
@@ -125,3 +125,13 @@ with st.sidebar:
                     st.session_state.topico_atual
                 )
                 st.success(avaliacao)
+    st.divider()
+    st.subheader("📋 Guia de Revisão")
+    
+    if st.button("Gerar Guia de Revisão"):
+        with st.spinner("Gerando guia..."):
+            guia = gerar_guia_revisao(topico)
+            st.session_state.guia_atual = guia
+
+    if "guia_atual" in st.session_state:
+        st.markdown(st.session_state.guia_atual)
