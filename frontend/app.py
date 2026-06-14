@@ -6,6 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 from backend.core.agent import interagir_com_jarvis
+from backend.core.learning import gerar_exercicio_active_recall, avaliar_resposta_aluno
 
 st.set_page_config(page_title="JARVIS IA", page_icon="🤖", layout="wide")
 st.title("🤖 JARVIS")
