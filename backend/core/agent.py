@@ -7,7 +7,7 @@ from backend.core.tools import executar_ferramenta
 
 
 client = OpenAI(
-    base_url='https://llm.liaufms.org/v1/gemma-3-12b-it', 
+    base_url='https://llm.liaufms.org/v1/qwen2-5-14b-instruct-awq', 
     api_key='Sua_Chave'
 )
 
@@ -33,11 +33,11 @@ Exemplo exato e obrigatório do que você deve retornar:
 
 Se não precisar de ferramenta, responda normalmente em texto."""
         
-    mensagens = [{"role": "system", "content": prompt_sistema}] + historico
+    mensagens = [{"role": "user", "content": prompt_sistema}] + historico
     mensagens.append({"role": "user", "content": mensagem_usuario})
 
     resposta = client.chat.completions.create(
-        model='google/gemma-3-12b-it',
+        model='Qwen/Qwen2.5-14B-Instruct-AWQ',
         messages=mensagens,
         temperature=0.1
     )
@@ -66,7 +66,7 @@ Se não precisar de ferramenta, responda normalmente em texto."""
             mensagens.append({"role": "user", "content": f"O sistema retornou estes dados: {resultado}. Com base neles, responda à minha pergunta."})
             
             resposta_final = client.chat.completions.create(
-                model='google/gemma-3-12b-it',
+                model='Qwen/Qwen2.5-14B-Instruct-AWQ',
                 messages=mensagens,
                 temperature=0.3
             )
