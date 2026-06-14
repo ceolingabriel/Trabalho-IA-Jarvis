@@ -6,7 +6,7 @@ from backend.core.tools import rag_system
 # =================================================================
 def gerar_exercicio_active_recall(topico: str) -> str:
     """Usa o RAG para ler o material e gera uma pergunta interativa para o aluno."""
-    contexto = rag_system.buscar_trechos_relevantes(topico)
+    contexto = rag_system.buscar_trechos_relevantes(topico, top_k=6)
     
     if "Nenhum material" in contexto:
         return "Adicione documentos sobre este tópico na pasta data/ primeiro!"
@@ -15,12 +15,12 @@ def gerar_exercicio_active_recall(topico: str) -> str:
         "Baseado EXCLUSIVAMENTE neste contexto dos materiais do aluno:\n"
         f"{contexto}\n\n"
         "Gere UMA pergunta desafiadora de Active Recall para testar o conhecimento dele sobre o tópico. "
-        "Não dê a resposta. Apenas faça a pergunta de forma clara."
+        "Não dê a resposta. Retorne APENAS a pergunta, sem introduções, sem explicações e sem repetir o contexto."
     )
     
     resposta = client.chat.completions.create(
         model='Qwen/Qwen2.5-14B-Instruct-AWQ',
-        messages=[{"role": "user", "content": "Olá"}]
+        messages=[{"role": "user", "content": prompt}]
     )
     return resposta.choices[0].message.content
 
@@ -38,7 +38,7 @@ def avaliar_resposta_aluno(pergunta: str, resposta_aluno: str, topico: str) -> s
     
     resposta = client.chat.completions.create(
         model='Qwen/Qwen2.5-14B-Instruct-AWQ',
-        messages=[{"role": "user", "content": "Olá"}]
+        messages=[{"role": "user", "content": prompt}]
     )
     return resposta.choices[0].message.content
 
@@ -63,6 +63,6 @@ def gerar_guia_revisao(topico: str) -> str:
     
     resposta = client.chat.completions.create(
         model='Qwen/Qwen2.5-14B-Instruct-AWQ',
-        messages=[{"role": "user", "content": "Olá"}]
+        messages=[{"role": "user", "content": prompt}]
     )
     return resposta.choices[0].message.content
