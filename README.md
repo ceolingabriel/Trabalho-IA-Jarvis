@@ -122,6 +122,32 @@ Trabalho-IA-Jarvis/
 | `concluir_tarefa` | Marca tarefa como concluída pelo ID |
 | `buscar_material_rag` | Busca semântica nos PDFs da pasta `data/` |
 
+## Modo Aprendizado (learning.py)
+
+O módulo de aprendizado oferece funcionalidades educativas baseadas nos documentos indexados pelo RAG, acessíveis pela barra lateral da interface.
+
+### Funcionalidades
+
+**1. Active Recall**
+
+Gera automaticamente uma pergunta desafiadora sobre um tópico escolhido pelo usuário, com base exclusivamente nos PDFs da pasta `data/`. O fluxo é:
+
+1. O usuário digita um tópico na sidebar
+2. O sistema busca trechos relevantes no índice FAISS via `buscar_trechos_relevantes()`
+3. É formulado uma pergunta de Active Recall sem revelar a resposta
+4. O usuário responde e solicita a avaliação
+
+**2. Guia de Revisão**
+
+Gera um guia estruturado sobre o tópico contendo:
+- Os 3 conceitos principais a serem lembrados
+- As "pegadinhas" e partes mais difíceis do tema
+- Uma recomendação prática de como aplicar o conteúdo
+
+### Limitações
+
+- Todas as funcionalidades dependem do RAG: se nenhum PDF relevante ao tópico estiver na pasta `data/`, o sistema retorna uma mensagem de aviso em vez de inventar conteúdo
+- O guia de revisão (`gerar_guia_revisao`) está implementado no backend mas ainda não está exposto na interface Streamlit
 
 ## Arquitetura
 
