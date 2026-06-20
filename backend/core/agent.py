@@ -1,14 +1,12 @@
 import json
 from datetime import datetime
 from openai import OpenAI
-from datetime import datetime
 import pytz
 from backend.core.tools import executar_ferramenta
 
-
 client = OpenAI(
-    base_url='https://llm.liaufms.org/v1/gemma-3-12b-it', 
-    api_key='Sua_Chave'
+    base_url='https://llm.liaufms.org/v1/qwen2-5-14b-instruct-awq', 
+    api_key='REIkURcI7rTTqsTwlJi8MrgnKFwOiqky7Ezh7hH-l-k'
 )
 
 def interagir_com_jarvis(mensagem_usuario: str, historico: list = None) -> str:
@@ -34,21 +32,21 @@ Exemplo exato e obrigatório do que você deve retornar:
 Se não precisar de ferramenta, responda normalmente em texto."""
         
     mensagens = [{"role": "system", "content": prompt_sistema}] + historico
-    mensagens.append({"role": "user", "content": mensagem_usuario})
+    mensagens.append({"role": "user", "content": mensagem_usuario if 'mensagem_usuario' in locals() else mensagem_usuario})
 
-    resposta = client.chat.completions.create(
-        model='google/gemma-3-12b-it',
-        messages=mensagens,
-        temperature=0.1
-    )
-    
-    texto_resposta = resposta.choices[0].message.content
+    try:
+        resposta = client.chat.completions.create(
+            model='Qwen/Qwen2.5-14B-Instruct-AWQ',
+            messages=mensagens,
+            temperature=0.1
+        )
+        texto_resposta = resposta.choices[0].message.content
+    except Exception as e:
+        return "⚠️ Estou com problemas para me conectar aos meus servidores. Por favor, verifique minha chave de API ou a conexão com o servidor."
     
     if '{"tool"' in texto_resposta or '{"tool":' in texto_resposta:
         try:
-            
             texto_limpo = texto_resposta.replace('```json', '').replace('```', '').strip()
-            
             
             inicio = texto_limpo.find('{')
             fim = texto_limpo.rfind('}') + 1
@@ -58,15 +56,13 @@ Se não precisar de ferramenta, responda normalmente em texto."""
             nome_ferramenta = dados_ferramenta.get("tool")
             args_ferramenta = dados_ferramenta.get("args", {})
             
-            
             resultado = executar_ferramenta(nome_ferramenta, args_ferramenta)
-            
             
             mensagens.append({"role": "assistant", "content": json_str})
             mensagens.append({"role": "user", "content": f"O sistema retornou estes dados: {resultado}. Com base neles, responda à minha pergunta."})
             
             resposta_final = client.chat.completions.create(
-                model='google/gemma-3-12b-it',
+                model='Qwen/Qwen2.5-14B-Instruct-AWQ',
                 messages=mensagens,
                 temperature=0.3
             )
@@ -78,5 +74,4 @@ Se não precisar de ferramenta, responda normalmente em texto."""
             print(f"[ERRO DE PARSER] A falha do Python foi: {e}\n")
             return "Desculpe, a IA tentou formatar os dados de busca, mas cometeu um erro de sintaxe. Pode perguntar de novo?"
 
-    
     return texto_resposta
