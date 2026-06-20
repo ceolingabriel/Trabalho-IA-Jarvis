@@ -93,10 +93,19 @@ if prompt:
 
     with st.spinner("JARVIS está pensando e consultando o sistema..."):
         historico_formatado = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages[:-1]]
-        resposta_jarvis = interagir_com_jarvis(prompt, historico=historico_formatado)
-
-    st.chat_message("assistant").markdown(resposta_jarvis)
-    st.session_state.messages.append({"role": "assistant", "content": resposta_jarvis})
+        
+        # INÍCIO DA MODIFICAÇÃO: Tratamento de Erro do Streamlit
+        try:
+            resposta_jarvis = interagir_com_jarvis(prompt, historico=historico_formatado)
+            
+            st.chat_message("assistant").markdown(resposta_jarvis)
+            st.session_state.messages.append({"role": "assistant", "content": resposta_jarvis})
+            
+        except Exception as e:
+            # Exibe um bloco vermelho amigável e fixo em vez da tela inteira de erro
+            st.error("⚠️ Ocorreu um erro de comunicação com os servidores da IA. Verifique sua chave de API ou sua conexão.")
+            print(f"[Log de Erro] Falha na chamada da API: {e}")
+        # FIM DA MODIFICAÇÃO
 
 # =========================================================
 # BARRA LATERAL: MELHORIAS DE APRENDIZADO 
@@ -112,7 +121,6 @@ with st.sidebar:
             st.session_state.pergunta_atual = gerar_exercicio_active_recall(topico)
             st.session_state.topico_atual = topico
             
-    
     if "pergunta_atual" in st.session_state:
         st.info(st.session_state.pergunta_atual)
         resposta_aluno = st.text_area("Sua resposta:")
