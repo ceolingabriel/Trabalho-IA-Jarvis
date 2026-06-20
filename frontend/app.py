@@ -14,9 +14,7 @@ st.title("🤖 JARVIS")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# =========================================================
 # WIDGET DE NOTÍCIAS — deve ficar ANTES do chat
-# =========================================================
 noticias_exemplo = [
     {"emoji": "🔐", "title": "Riscos de Cibersegurança e IA em 2026", "link": "https://itshow.com.br/risco-ciberseguranca-ia-software-infraestrutura-2026/"},
     {"emoji": "🤖", "title": "Problemas no RAG e 5 Formas de Corrigir", "link": "https://www.ibm.com/br-pt/think/insights/rag-problems-five-ways-to-fix"},
@@ -78,9 +76,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# =========================================================
 # CHAT PRINCIPAL
-# =========================================================
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
@@ -94,7 +90,6 @@ if prompt:
     with st.spinner("JARVIS está pensando e consultando o sistema..."):
         historico_formatado = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages[:-1]]
         
-        # INÍCIO DA MODIFICAÇÃO: Tratamento de Erro do Streamlit
         try:
             resposta_jarvis = interagir_com_jarvis(prompt, historico=historico_formatado)
             
@@ -102,10 +97,8 @@ if prompt:
             st.session_state.messages.append({"role": "assistant", "content": resposta_jarvis})
             
         except Exception as e:
-            # Exibe um bloco vermelho amigável e fixo em vez da tela inteira de erro
             st.error("⚠️ Ocorreu um erro de comunicação com os servidores da IA. Verifique sua chave de API ou sua conexão.")
             print(f"[Log de Erro] Falha na chamada da API: {e}")
-        # FIM DA MODIFICAÇÃO
 
 # =========================================================
 # BARRA LATERAL: MELHORIAS DE APRENDIZADO 

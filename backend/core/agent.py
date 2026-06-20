@@ -31,7 +31,6 @@ Exemplo exato e obrigatório do que você deve retornar:
 
 Se não precisar de ferramenta, responda normalmente em texto."""
         
-    # CORREÇÃO: Alterado de "user" para "system" para que o modelo processe como instrução de sistema
     mensagens = [{"role": "system", "content": prompt_sistema}] + historico
     mensagens.append({"role": "user", "content": message_usuario if 'message_usuario' in locals() else mensagem_usuario})
 
@@ -43,7 +42,6 @@ Se não precisar de ferramenta, responda normalmente em texto."""
         )
         texto_resposta = resposta.choices[0].message.content
     except Exception as e:
-        # CORREÇÃO: Tratamento de exceção estruturado para evitar a tela vermelha caso ocorra erro de autenticação/conexão
         return "⚠️ Estou com problemas para me conectar aos meus servidores. Por favor, verifique minha chave de API ou a conexão com o servidor."
     
     if '{"tool"' in texto_resposta or '{"tool":' in texto_resposta:
