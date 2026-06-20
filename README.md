@@ -160,3 +160,21 @@ O agente segue o padrão **ReAct** (Reasoning + Acting): o usuário envia uma me
 |---|---| 
 | `Claude (Anthropic)` | Auxílio na arquitetura e revisão do código, e documentação |
 | `Gemini (Google)` | Auxílio na construção da arquitetura |
+| `Manus (Butterfly Effect)` | Auxílio em pesquisas e revisão do código |
+
+
+
+## Análise de Erros
+
+- Consulta de Agenda do Usuário
+
+Foi identificado um problema relacionado à funcionalidade de consulta da agenda do estudante. Quando o usuário solicita informações sobre compromissos, provas ou tarefas agendadas, o modelo de IA frequentemente responde solicitando que o usuário informe sua agenda, em vez de recuperar automaticamente as informações já armazenadas no sistema. Esse comportamento ocorre devido a uma falha na integração entre o modelo de linguagem (LLM) e a camada de persistência de dados da aplicação. Embora o sistema possua uma base de dados contendo os eventos acadêmicos do usuário, o modelo nem sempre executa corretamente a consulta necessária antes de gerar a resposta. Como consequência, a IA baseia sua resposta apenas no contexto da conversa atual, ignorando informações que estão disponíveis no banco de dados.
+Como melhoria futura, vai ser aprimorado o mecanismo de integração entre o modelo de IA e o banco de dados, implementando validações que garantam a execução obrigatória da consulta sempre que forem detectadas intenções relacionadas à agenda, calendário, provas, atividades ou compromissos acadêmicos.
+
+- I/O Overhead e Redundância de DDL no Banco de Dados
+
+No arquivo database.py, a sua função _conectar() executa os comandos CREATE TABLE IF NOT EXISTS para as tabelas agenda e tarefas toda vez que é chamada. Como essa função é a base de todas as ferramentas de banco de dados (consultar_agenda, adicionar_tarefa, etc.), você está rodando comandos de DDL (Data Definition Language) a cada inserção ou leitura. Em arquitetura de sistemas, operações de I/O e validações de esquema de banco de dados são custosas. Um sistema robusto executa a definição de esquema (migrações ou criação de tabelas) apenas uma vez na inicialização da aplicação (startup). Colocar isso dentro da rota de transação diária gera um overhead desnecessário e é considerado um anti-pattern em engenharia de software.
+
+- "Amnésia de Estado" no Módulo de Aprendizagem
+
+No arquivo learning.py, as funções como gerar_exercicio_active_recall() e gerar_guia_revisao() instanciam suas próprias chamadas diretas para a API da OpenAI (client.chat.completions.create). Elas constroem um prompt isolado e retornam o texto. Isso cria um sistema distribuído stateless (sem estado) que quebra a ilusão de um agente único. Como essas funções ignoram a variável historico gerenciada no agent.py, o JARVIS sofre de "amnésia". Se a interface chamar gerar_exercicio_active_recall e a IA fizer uma pergunta sobre grafos, essa pergunta não é salva no histórico principal do agente. Quando o usuário digitar a resposta na caixa de texto do chat, o fluxo passará pelo agent.py, e o JARVIS não fará a menor ideia de qual pergunta ele mesmo acabou de fazer. Toda a geração do LLM precisa compartilhar o mesmo gerenciamento de estado (memória de curto prazo).
