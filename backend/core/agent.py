@@ -32,7 +32,7 @@ Exemplo exato e obrigatório do que você deve retornar:
 Se não precisar de ferramenta, responda normalmente em texto."""
         
     mensagens = [{"role": "system", "content": prompt_sistema}] + historico
-    mensagens.append({"role": "user", "content": message_usuario if 'message_usuario' in locals() else mensagem_usuario})
+    mensagens.append({"role": "user", "content": mensagem_usuario if 'mensagem_usuario' in locals() else mensagem_usuario})
 
     try:
         resposta = client.chat.completions.create(
